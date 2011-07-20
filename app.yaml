@@ -1,0 +1,24 @@
+application: sa-bookmark-sync
+version: 2
+runtime: python
+api_version: 1
+
+builtins:
+- remote_api: on
+- datastore_admin: on
+
+handlers:
+- url: /_ah/queue/deferred
+  script: djangoappengine/deferred/handler.py
+  login: admin
+
+- url: /media/admin
+  static_dir: django/contrib/admin/media
+  expiration: '0'
+
+- url: /media
+  static_dir: media/
+  expiration: '365d'
+
+- url: /.*
+  script: djangoappengine/main/main.py
