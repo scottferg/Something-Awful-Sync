@@ -18,7 +18,5 @@ urlpatterns = patterns('',
     (r'^api/v1/bookmark/(?P<bookmark_id>[^/]+)/$', Resource(handler = SyncV1Handler, **auth)),
     (r'^api/v1/bookmark/$', Resource(handler = SyncV1Handler, **auth)),
 
-    (r'^user/admin/$', 'bookmarks.views.create_admin'),
-
     (r'^admin/', include(admin.site.urls)),
 )
